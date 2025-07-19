@@ -12,7 +12,6 @@ const AboutUs = () => {
     <section id="sobre-nosotros" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Text Content */}
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
@@ -35,7 +34,6 @@ const AboutUs = () => {
               </div>
             </div>
 
-            {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, index) => (
                 <div key={index} className="bg-gradient-to-br from-pink-50 to-orange-50 p-6 rounded-2xl text-center">
@@ -49,7 +47,6 @@ const AboutUs = () => {
             </div>
           </div>
 
-          {/* Image */}
           <div className="relative">
             <div className="relative z-10">
               <img
@@ -59,7 +56,6 @@ const AboutUs = () => {
               />
             </div>
             
-            {/* Floating card */}
             <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="bg-green-100 p-2 rounded-full">
@@ -75,7 +71,6 @@ const AboutUs = () => {
               </p>
             </div>
 
-            {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-200 rounded-full opacity-40 blur-xl"></div>
             <div className="absolute top-1/2 -left-6 w-16 h-16 bg-green-200 rounded-full opacity-40 blur-xl"></div>
           </div>

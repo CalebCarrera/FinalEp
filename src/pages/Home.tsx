@@ -9,7 +9,6 @@ const Home = () => {
 
       <Benefits />
 
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-pink-500 to-orange-500">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">

@@ -1,11 +1,72 @@
 import { ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
+  const [counts, setCounts] = useState({
+    adopted: 0,
+    experience: 0,
+    support: 0
+  });
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    const statsSection = document.querySelector('#inicio');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const duration = 1500;
+    const steps = 80;
+    const stepDuration = duration / steps;
+
+    const finalValues = {
+      adopted: 500,
+      experience: 15,
+      support: 24
+    };
+
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      
+      const progress = currentStep / steps;
+      
+      setCounts({
+        adopted: Math.floor(finalValues.adopted * progress),
+        experience: Math.floor(finalValues.experience * progress),
+        support: Math.floor(finalValues.support * progress)
+      });
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        setCounts(finalValues);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(timer);
+  }, [isVisible]);
+
   return (
     <section id="inicio" className="pt-16 bg-gradient-to-br from-pink-50 via-orange-50 to-yellow-50 min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
@@ -38,24 +99,28 @@ const Hero = () => {
               </button>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-pink-600">500+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-pink-600 transition-all duration-300">
+                  {counts.adopted}+
+                </div>
                 <div className="text-sm text-gray-600">Adoptados</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-orange-500">15+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-orange-500 transition-all duration-300">
+                  {counts.experience}+
+                </div>
                 <div className="text-sm text-gray-600">Años de experiencia</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-green-500">24/7</div>
+                <div className="text-2xl sm:text-3xl font-bold text-green-500 transition-all duration-300">
+                  {counts.support}/7
+                </div>
                 <div className="text-sm text-gray-600">Apoyo post-adopción</div>
               </div>
             </div>
           </div>
 
-          {/* Image */}
           <div className="relative">
             <div className="relative z-10">
               <img
@@ -64,7 +129,6 @@ const Hero = () => {
                 className="w-full h-96 lg:h-[500px] object-cover rounded-3xl shadow-2xl"
               />
             </div>
-            {/* Decorative elements */}
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-pink-200 rounded-full opacity-60 blur-xl"></div>
             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-200 rounded-full opacity-60 blur-xl"></div>
           </div>
