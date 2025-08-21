@@ -150,51 +150,50 @@ const Adopt = () => {
         </div>
       </section>
 
-      <section className="py-8 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-              <input
-                type="text"
-                placeholder="Buscar por nombre o raza..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-              />
-            </div>
 
-            <div className="flex gap-4 items-center">
-              <div className="flex items-center space-x-2">
-                <Filter className="h-5 w-5 text-gray-500" />
-                <span className="text-gray-700 font-medium">Filtros:</span>
+        <section className="py-8 bg-white border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
+              <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-pink-400 h-6 w-6 transition-all duration-300" />
+                <input
+                  type="text"
+                  placeholder="Buscar por nombre o raza..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 border border-pink-200 rounded-full shadow focus:ring-4 focus:ring-pink-300 focus:border-pink-400 transition-all duration-300 text-lg"
+                />
               </div>
-              
-              <select
-                value={selectedAge}
-                onChange={(e) => setSelectedAge(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-              >
-                <option value="all">Todas las edades</option>
-                <option value="young">Joven (0-2 años)</option>
-                <option value="adult">Adulto (3-6 años)</option>
-                <option value="senior">Senior (7+ años)</option>
-              </select>
 
-              <select
-                value={selectedSize}
-                onChange={(e) => setSelectedSize(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-              >
-                <option value="all">Todos los tamaños</option>
-                <option value="pequeño">Pequeño</option>
-                <option value="mediano">Mediano</option>
-                <option value="grande">Grande</option>
-              </select>
+              <div className="flex gap-4 items-center bg-gradient-to-r from-pink-100 via-orange-100 to-yellow-100 p-4 rounded-xl shadow-md">
+                <div className="flex items-center space-x-2">
+                  <Filter className="h-6 w-6 text-pink-500" />
+                  <span className="text-pink-700 font-semibold">Filtros:</span>
+                </div>
+                <select
+                  value={selectedAge}
+                  onChange={(e) => setSelectedAge(e.target.value)}
+                  className="px-4 py-2 border border-pink-300 rounded-full focus:ring-2 focus:ring-pink-400 focus:border-pink-400 bg-white text-pink-700 font-medium shadow-sm hover:bg-pink-50 transition-all duration-200"
+                >
+                  <option value="all">Todas las edades</option>
+                  <option value="young">Joven (0-2 años)</option>
+                  <option value="adult">Adulto (3-6 años)</option>
+                  <option value="senior">Senior (7+ años)</option>
+                </select>
+                <select
+                  value={selectedSize}
+                  onChange={(e) => setSelectedSize(e.target.value)}
+                  className="px-4 py-2 border border-pink-300 rounded-full focus:ring-2 focus:ring-pink-400 focus:border-pink-400 bg-white text-pink-700 font-medium shadow-sm hover:bg-pink-50 transition-all duration-200"
+                >
+                  <option value="all">Todos los tamaños</option>
+                  <option value="pequeño">Pequeño</option>
+                  <option value="mediano">Mediano</option>
+                  <option value="grande">Grande</option>
+                </select>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       <DogGallery dogs={filteredDogs} />
 
@@ -209,38 +208,41 @@ const Adopt = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                step: '1',
-                title: 'Conoce a tu futuro amigo',
-                description: 'Visita nuestro refugio y pasa tiempo con el perrito que te interese.'
-              },
-              {
-                step: '2',
-                title: 'Completa la solicitud',
-                description: 'Llena nuestro formulario de adopción con información sobre tu hogar.'
-              },
-              {
-                step: '3',
-                title: 'Entrevista y evaluación',
-                description: 'Conversamos contigo para asegurar la mejor compatibilidad.'
-              },
-              {
-                step: '4',
-                title: '¡Bienvenido a casa!',
-                description: 'Finalizamos el proceso y tu nuevo amigo va contigo a casa.'
-              }
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-pink-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                  {item.step}
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                {
+                  step: '1',
+                  title: 'Conoce a tu futuro amigo',
+                  description: 'Visita nuestro refugio y pasa tiempo con el perrito que te interese.'
+                },
+                {
+                  step: '2',
+                  title: 'Completa la solicitud',
+                  description: 'Llena nuestro formulario de adopción con información sobre tu hogar.'
+                },
+                {
+                  step: '3',
+                  title: 'Entrevista y evaluación',
+                  description: 'Conversamos contigo para asegurar la mejor compatibilidad.'
+                },
+                {
+                  step: '4',
+                  title: '¡Bienvenido a casa!',
+                  description: 'Finalizamos el proceso y tu nuevo amigo va contigo a casa.'
+                }
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="text-center bg-gradient-to-br from-pink-100 via-orange-100 to-yellow-100 rounded-2xl shadow-lg p-8 hover:scale-105 transition-transform duration-300 border border-pink-200"
+                >
+                  <div className="bg-pink-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg animate-bounce-slow">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-semibold text-pink-700 mb-2">{item.title}</h3>
+                  <p className="text-pink-600 text-base">{item.description}</p>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
         </div>
       </section>
     </div>
